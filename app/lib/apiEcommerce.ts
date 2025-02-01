@@ -1,3 +1,4 @@
+import type { Product } from '@/components/main/cards/ProductCard';
 import type {
   SignUp,
   UserAuthenticated,
@@ -27,5 +28,10 @@ export const signIn = async (
     email,
     password,
   });
+  return response.data;
+};
+
+export const getPublicProducts = async (): Promise<Product[]> => {
+  const response = await apiEcommerce.get('/v1/products');
   return response.data;
 };

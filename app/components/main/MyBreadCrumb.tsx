@@ -1,7 +1,7 @@
 interface BreadCrumb {
   name: string;
   description: string;
-  bgImage: string;
+  // bgImage: string;
   height?: string;
 }
 

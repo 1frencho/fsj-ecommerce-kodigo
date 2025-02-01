@@ -1,3 +1,6 @@
+import MyBreadCrumb from '@/components/main/MyBreadCrumb';
+import RatingsPanel from '@/sections/ratings/RatingsPanel';
+
 // export function meta({data}: Route.MetaArgs) {
 export function meta() {
   return [
@@ -7,5 +10,13 @@ export function meta() {
 }
 
 export default function ProductReviewsPage() {
-  return <></>;
+  return (
+    <>
+      <MyBreadCrumb
+        name="Product Reviews"
+        description="Get ratings and reviews for products"
+      />
+      <RatingsPanel />
+    </>
+  );
 }

@@ -1,3 +1,5 @@
+import ProductsPanel from '@/sections/products/ProductsPanel';
+
 // export function meta({data}: Route.MetaArgs) {
 export function meta() {
   return [
@@ -7,5 +9,9 @@ export function meta() {
 }
 
 export default function ProductsPage() {
-  return <></>;
+  return (
+    <>
+      <ProductsPanel />
+    </>
+  );
 }
