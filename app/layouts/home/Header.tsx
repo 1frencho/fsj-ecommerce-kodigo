@@ -19,9 +19,14 @@ import { IoCloseCircle } from 'react-icons/io5';
 import { Link, useLocation } from 'react-router';
 import { MdCategory } from 'react-icons/md';
 import { navItems, productsItemNav } from '../nav.config';
+import useAuth from '@/hooks/useAuth';
+import AccountMenu from '../AccountMenu';
+import { MotionDiv } from '@/components/main/content/MotionDiv';
 
 export default function Header() {
   const { pathname } = useLocation();
+
+  const { session, signOut } = useAuth(false);
 
   const isActive = (to: string, currentPath: string) => {
     return currentPath === to;
@@ -76,14 +81,29 @@ export default function Header() {
         </div>
 
         {/* Buttons for larger screens */}
-        <div className="hidden items-center gap-2 md:flex md:flex-1 md:justify-end">
-          <Link to="/signIn" className="myPrimaryOutlineBtn">
-            Sign In
-          </Link>
-          <Link to="/signUp" className="myPrimaryBtn">
-            Create Account
-          </Link>
-        </div>
+        <MotionDiv className="hidden items-center gap-2 md:flex md:flex-1 md:justify-end">
+          {!session?.user?.id ? (
+            <>
+              <Link to="/signIn" className="myPrimaryOutlineBtn">
+                Sign In
+              </Link>
+              <Link to="/signUp" className="myPrimaryBtn">
+                Create Account
+              </Link>
+            </>
+          ) : (
+            <></>
+          )}
+        </MotionDiv>
+
+        {session?.user?.id && (
+          <AccountMenu
+            fullName={session.user.name}
+            email={session.user.email}
+            role={session.user.role_id}
+            handleLogout={signOut}
+          />
+        )}
 
         {/* Menu for smaller screens */}
         <div className="flex md:hidden">

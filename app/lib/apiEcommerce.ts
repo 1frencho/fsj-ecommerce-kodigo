@@ -2,8 +2,9 @@ import type { Product } from '@/components/main/cards/ProductCard';
 import type {
   SignUp,
   UserAuthenticated,
+  UserMe,
   UserRegistered,
-} from '@/interfaces/api.interfaces';
+} from '@/interfaces/auth.interfaces';
 import axios from 'axios';
 
 export const apiEcommerce = axios.create({
@@ -28,6 +29,14 @@ export const signIn = async (
     email,
     password,
   });
+  return response.data;
+};
+
+export const getMyUser = async (): Promise<{
+  user: UserMe;
+  message: string;
+}> => {
+  const response = await apiEcommerce.get('/auth/me');
   return response.data;
 };
 

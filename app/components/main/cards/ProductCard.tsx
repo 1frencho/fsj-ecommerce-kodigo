@@ -28,7 +28,9 @@ function ProductCard({ product }: ProductCardProps) {
             <img
               src={product.image_url}
               alt="image"
-              className="relative z-10 h-auto w-full rounded-xl object-cover shadow-lg shadow-stone-300"
+              width={350}
+              height={350}
+              className="relative z-10 h-[250px] w-full rounded-xl object-cover shadow-lg shadow-stone-300"
             />
           </div>
           <div className="flex flex-col items-center justify-center gap-4 px-4 py-6 text-center">

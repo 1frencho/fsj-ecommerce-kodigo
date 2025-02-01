@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import type { SignUpErrorsInterface } from '@/interfaces/api.interfaces';
+import type { SignUpErrorsInterface } from '@/interfaces/auth.interfaces';
 import { signUp } from '@/lib/apiEcommerce';
 import { Form, Input, type FormProps } from 'antd';
 import { AxiosError } from 'axios';

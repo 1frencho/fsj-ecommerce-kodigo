@@ -7,6 +7,9 @@ export default [
     route('products', './routes/home/ProductsPage.tsx'),
     route('signIn', './routes/home/SignInPage.tsx'),
     route('signUp', './routes/home/SignUpPage.tsx'),
-    route('productReviews', './routes/home/ProductReviewsPage.tsx'),
+    // PROTECTED ADMIN ROUTES
+    layout('./components/main/auth/ProtectedAdmin.tsx', [
+      route('productReviews', './routes/home/ProductReviewsPage.tsx'),
+    ]),
   ]),
 ] satisfies RouteConfig;

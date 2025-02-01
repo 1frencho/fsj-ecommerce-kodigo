@@ -30,7 +30,7 @@ function ProductsPanel() {
           <h2 className="text-xl font-semibold text-primary">Product List</h2>
         </aside>
         <div className="flex w-full flex-col gap-4">
-          <section className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <section className="grid w-full grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4">
             {isLoading
               ? [...Array(12)].map((_, i) => <SkeletonProductCard key={i} />)
               : products.map((product) => (

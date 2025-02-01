@@ -4,8 +4,12 @@ import Header from './Header';
 import Footer from './Footer';
 import type { Route } from './+types/HomeLayout';
 import { FaWebAwesome } from 'react-icons/fa6';
+import { useSelector } from 'react-redux';
+import type { RootState } from '@/stores';
 
 function HomeLayout({ notFound }: { notFound?: boolean }) {
+  const { loading } = useSelector((state: RootState) => state.auth);
+  if (loading) return null;
   return (
     <>
       <Header />

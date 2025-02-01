@@ -4,9 +4,10 @@ import { Loader2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router';
 import { useState } from 'react';
 import { signIn } from '@/lib/apiEcommerce';
-import type { SignInErrorsInterface } from '@/interfaces/api.interfaces';
+import type { SignInErrorsInterface } from '@/interfaces/auth.interfaces';
 import { toast } from 'sonner';
 import { AxiosError } from 'axios';
+import useAuth from '@/hooks/useAuth';
 
 // Define the form values interface
 interface FormValues {
@@ -16,6 +17,8 @@ interface FormValues {
 
 function SignInForm() {
   const [isLoading, setIsLoading] = useState(false);
+
+  const { setToken } = useAuth(true);
 
   const navigate = useNavigate();
 
@@ -32,6 +35,8 @@ function SignInForm() {
         toast.error('There was an error while signing in');
         return;
       }
+
+      setToken(response.token);
       navigate('/products');
       toast.success('You have successfully signed in');
     } catch (error) {

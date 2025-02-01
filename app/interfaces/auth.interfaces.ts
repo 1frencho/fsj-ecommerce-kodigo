@@ -43,3 +43,20 @@ export interface UserAuthenticated {
   token: string;
   expiration: number;
 }
+
+// User Profile
+
+export interface UserMeResponse {
+  message: string;
+  user: UserMe;
+}
+
+export interface UserMe {
+  id: number;
+  name: string;
+  email: string;
+  email_verified_at: null;
+  created_at: Date;
+  updated_at: Date;
+  role_id: 1 | 2;
+}

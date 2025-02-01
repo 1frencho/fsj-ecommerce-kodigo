@@ -3,6 +3,9 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import type { Route } from './+types/root';
 import stylesheet from './app.css?url';
 import { Toaster } from './components/ui/sonner';
+import { Provider } from 'react-redux';
+import { store } from './stores';
+import useAuth from './hooks/useAuth';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -20,24 +23,30 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <Toaster richColors position="top-right" />
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
+    <Provider store={store}>
+      <html lang="en">
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <Meta />
+          <Links />
+        </head>
+        <body>
+          <Toaster richColors position="top-right" />
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </html>
+    </Provider>
   );
 }
 
 export default function App() {
+  const { loading } = useAuth(true);
+
+  if (loading) return null;
+
   return (
     <>
       <Outlet />

@@ -33,7 +33,7 @@ function RatingsPanel() {
   return (
     <>
       <section className="flex flex-col items-center justify-center gap-4 p-4 md:p-8">
-        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4">
           {MOCK_RATINGS.map((rating) => (
             <RatingCard key={rating.id} testimonial={rating} />
           ))}
