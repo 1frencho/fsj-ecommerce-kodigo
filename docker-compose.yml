@@ -3,8 +3,20 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    networks:
+      - frontend
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - APP_ENV={{APP_ENV}}
       - VITE_API_ECOMMERCE={{VITE_API_ECOMMERCE}}
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.fsj_ecommerce-https.tls=true'
+      - 'traefik.http.routers.fsj_ecommerce-https.tls.certresolver=cloudflare'
+      - 'traefik.http.routers.fsj_ecommerce-https.entrypoints=websecure'
+      - 'traefik.http.routers.fsj_ecommerce-https.rule=Host(`fsj-ecommerce.frencho.dev`)'
+
+networks:
+  frontend:
+    external: true
