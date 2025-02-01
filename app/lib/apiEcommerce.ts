@@ -44,8 +44,43 @@ export const getMyUser = async (): Promise<{
   return response.data;
 };
 
-export const getPublicProducts = async (): Promise<Product[]> => {
-  const response = await apiEcommerce.get('/v1/products');
+export interface ProductFilters {
+  name?: string;
+  // description?: string;
+  min_price?: number;
+  max_price?: number;
+  // min_stock?: number;
+  // max_stock?: number;
+  is_active?: boolean;
+  sort_by?:
+    | 'name'
+    | 'price'
+    | 'stock'
+    | 'is_active'
+    | 'average_rating'
+    | 'none';
+  sort_order?: 'desc' | 'asc' | 'none';
+  // start_date?: string;
+}
+
+export const getPublicProducts = async ({
+  is_active,
+  max_price,
+  min_price,
+  name,
+  sort_by,
+  sort_order,
+}: ProductFilters): Promise<Product[]> => {
+  const response = await apiEcommerce.get('/v1/products', {
+    params: {
+      is_active,
+      max_price,
+      min_price,
+      name,
+      sort_by,
+      sort_order,
+    },
+  });
   return response.data;
 };
 
@@ -76,5 +111,12 @@ export const rateProduct = async ({
 
 export const getRatings = async (): Promise<Rating[]> => {
   const response = await apiEcommerce.get('/v1/valuing_product');
+  return response.data;
+};
+
+export const getProductRatingsById = async (
+  product_id: number,
+): Promise<Rating[]> => {
+  const response = await apiEcommerce.get(`/v1/valuing_product/${product_id}`);
   return response.data;
 };

@@ -9,12 +9,13 @@ import 'dayjs/locale/es';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Image } from 'antd';
 import MainModal from '@/components/main/dialogs/MainModal';
+import ProductForm from '@/components/main/forms/ProductForm';
 
 const EnhancedTable = lazy(
   () => import('@/components/main/tables/EnhancedTable'),
 );
 // const MainModal = lazy(() => import('@/components/main/dialogs/MainModal'));
-const ProductForm = lazy(() => import('@/components/main/forms/ProductForm'));
+// const ProductForm = lazy(() => import('@/components/main/forms/ProductForm'));
 
 dayjs.locale('es');
 
@@ -198,9 +199,8 @@ function ManageProductsPanel() {
                   price: '0.00',
                   stock: 0,
                   image_url: '',
-                  is_active: false,
-                  created_at: new Date().toISOString(),
-                  updated_at: new Date().toISOString(),
+                  is_active: 0,
+                  average_rating: '0',
                 });
                 setOpen(true);
               }}

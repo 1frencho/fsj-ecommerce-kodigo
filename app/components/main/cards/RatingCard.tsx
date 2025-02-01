@@ -6,8 +6,9 @@ export interface Rating {
   id: number | string;
   quantity: number;
   product_id: number;
-  name: string;
-  avatar?: string;
+  image_url?: string;
+  product_name: string;
+  user_name: string;
   comment?: string | null;
 }
 
@@ -20,10 +21,10 @@ export function RatingCard({ testimonial }: RatingCardProps) {
     <MotionDiv className="group w-full rounded-2xl border border-solid border-gray-300 bg-white p-6 transition-all duration-500 hover:border-indigo-600">
       {/* Avatar y nombre */}
       <div className="mb-6 flex items-center gap-5">
-        {testimonial?.avatar ? (
+        {testimonial?.image_url ? (
           <img
-            src={testimonial.avatar}
-            alt={`${testimonial.name}`}
+            src={testimonial.image_url}
+            alt={`${testimonial.user_name}`}
             className="h-12 w-12 rounded-full"
           />
         ) : (
@@ -31,11 +32,11 @@ export function RatingCard({ testimonial }: RatingCardProps) {
         )}
         <div className="grid gap-1">
           <h5 className="font-medium text-gray-900 transition-all duration-500">
-            {testimonial.name}
+            {testimonial.product_name}
           </h5>
-          {/* <span className="text-sm leading-6 text-gray-500">
-            {testimonial.role}
-          </span> */}
+          <span className="text-sm leading-6 text-gray-500">
+            {testimonial.user_name}
+          </span>
         </div>
       </div>
 

@@ -1,6 +1,7 @@
-import { FaEye, FaStar } from 'react-icons/fa';
+import { FaEye } from 'react-icons/fa';
 import { Link } from 'react-router';
 import { MotionDiv } from '../content/MotionDiv';
+import { Rate } from 'antd';
 
 interface ProductCardProps {
   product: Product;
@@ -10,14 +11,14 @@ interface ProductCardProps {
 export interface Product {
   id: number;
   name: string;
-  price: string;
-  image_url: string;
   description: string;
-  rating?: number;
+  price: string;
   stock: number;
-  is_active: boolean;
-  created_at?: string;
-  updated_at?: string;
+  image_url: string;
+  is_active: number;
+  created_at?: Date;
+  updated_at?: Date;
+  average_rating: string;
 }
 
 function ProductCard({ product, isById }: ProductCardProps) {
@@ -34,15 +35,21 @@ function ProductCard({ product, isById }: ProductCardProps) {
               className="relative z-10 h-[250px] w-full rounded-xl object-cover shadow-lg shadow-stone-300"
             />
           </div>
-          <div className="flex flex-col items-center justify-center gap-4 px-4 py-6 text-center">
-            <div className="mb-2 flex w-full items-center justify-between">
-              <h4 className="font-manrope text-xl font-bold text-gray-900">
+          <div className="flex flex-col justify-center gap-4 px-4 py-6 text-center">
+            <div className="mb-2 flex w-full flex-col items-start justify-between">
+              <h3 className="font-manrope text-xl font-bold text-gray-900">
+                ${product.price}
+              </h3>
+              <h4 className="font-manrope text-xl font-semibold text-gray-900">
                 {product.name}
               </h4>
               <div className="flex items-center justify-end gap-3">
-                <FaStar className="text-yellow-500" />
+                <Rate
+                  disabled
+                  defaultValue={Number(product.average_rating) / 2}
+                />
                 <span className="text-sm font-medium text-gray-800">
-                  {product.rating}
+                  {(Number(product.average_rating) / 2).toFixed(2)}
                 </span>
               </div>
             </div>
