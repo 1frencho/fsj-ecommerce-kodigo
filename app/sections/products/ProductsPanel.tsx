@@ -36,6 +36,11 @@ function ProductsPanel() {
               : products.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
+            {!isLoading && products.length === 0 && (
+              <p className="text-center text-lg text-gray-500">
+                No available products
+              </p>
+            )}
           </section>
         </div>
       </section>

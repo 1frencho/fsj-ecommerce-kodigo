@@ -18,7 +18,7 @@ import { ChevronDownIcon } from 'lucide-react';
 import { IoCloseCircle } from 'react-icons/io5';
 import { Link, useLocation } from 'react-router';
 import { MdCategory } from 'react-icons/md';
-import { navItems, productsItemNav } from '../nav.config';
+import { navItems, adminItemNav } from '../nav.config';
 import useAuth from '@/hooks/useAuth';
 import AccountMenu from '../AccountMenu';
 import { MotionDiv } from '@/components/main/content/MotionDiv';
@@ -59,13 +59,13 @@ export default function Header() {
           <Popover>
             <PopoverTrigger asChild>
               <button className="navLink flex items-center gap-1">
-                Products
+                Admin
                 <ChevronDownIcon className="h-5 w-5" />
               </button>
             </PopoverTrigger>
             <PopoverContent className="rounded-lg bg-white p-4 shadow-md">
               <div className="grid gap-4">
-                {productsItemNav.map((item) => (
+                {adminItemNav.map((item) => (
                   <Link
                     key={item.name}
                     to={item.to}

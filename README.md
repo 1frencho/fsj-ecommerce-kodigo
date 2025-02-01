@@ -1,4 +1,4 @@
-# Welcome to React Router!
+# Final Project - Full Stack Jr. Product Manager
 
 A modern, production-ready template for building full-stack React applications using React Router.
 
@@ -67,15 +67,6 @@ docker build -f Dockerfile.bun -t my-app .
 # Run the container
 docker run -p 3000:3000 my-app
 ```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
 
 ### DIY Deployment
 

@@ -4,6 +4,7 @@ import { MotionDiv } from '../content/MotionDiv';
 
 interface ProductCardProps {
   product: Product;
+  isById?: boolean;
 }
 
 export interface Product {
@@ -19,11 +20,11 @@ export interface Product {
   updated_at?: string;
 }
 
-function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product, isById }: ProductCardProps) {
   return (
     <>
       <MotionDiv className="relative flex h-auto w-full items-center justify-center">
-        <div className="group rounded-xl bg-white p-2.5 shadow-lg shadow-gray-200 transition-all duration-500 hover:shadow-gray-300">
+        <div className="group w-full rounded-xl bg-white p-2.5 shadow-lg shadow-gray-200 transition-all duration-500 hover:shadow-gray-300">
           <div className="rounded-3xl">
             <img
               src={product.image_url}
@@ -49,12 +50,14 @@ function ProductCard({ product }: ProductCardProps) {
               {product.description}
             </p>
 
-            <Link
-              to={`/product/${product.id}`}
-              className="myPrimaryBtn w-full justify-center"
-            >
-              View <FaEye />
-            </Link>
+            {!isById && (
+              <Link
+                to={`/product/${product.id}`}
+                className="myPrimaryBtn w-full justify-center"
+              >
+                View <FaEye />
+              </Link>
+            )}
           </div>
         </div>
       </MotionDiv>

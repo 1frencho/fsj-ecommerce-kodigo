@@ -15,30 +15,10 @@ interface PopOverItem {
   to: string;
 }
 
-export const productsItemNav: PopOverItem[] = [
+export const adminItemNav: PopOverItem[] = [
   {
-    name: 'Analytics',
-    description: 'Get a better understanding of your traffic',
-    to: '#',
-  },
-  {
-    name: 'Engagement',
-    description: 'Speak directly to your customers',
-    to: '#',
-  },
-  {
-    name: 'Security',
-    description: 'Your customers’ data will be safe and secure',
-    to: '#',
-  },
-  {
-    name: 'Integrations',
-    description: 'Connect with third-party tools',
-    to: '#',
-  },
-  {
-    name: 'Automations',
-    description: 'Build strategic funnels that will convert',
-    to: '#',
+    name: 'Products',
+    description: 'Manage products as an admin',
+    to: '/admin/products',
   },
 ];

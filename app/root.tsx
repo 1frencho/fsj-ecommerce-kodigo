@@ -32,7 +32,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <Links />
         </head>
         <body>
-          <Toaster richColors position="top-right" />
+          <Toaster richColors position="top-right" closeButton />
           {children}
           <ScrollRestoration />
           <Scripts />

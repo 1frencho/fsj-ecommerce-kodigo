@@ -1,7 +1,7 @@
 import useAuth from '@/hooks/useAuth';
 
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { Outlet, useNavigate } from 'react-router';
 import { toast } from 'sonner';
 
 function ProtectedAdmin({ children }: { children: React.ReactNode }) {
@@ -30,7 +30,13 @@ function ProtectedAdmin({ children }: { children: React.ReactNode }) {
   // Show nothing while loading
   if (loading) return null;
 
-  return isAuthenticated && isAdmin ? <>{children}</> : null;
+  return isAuthenticated && isAdmin ? (
+    <>
+      {children}
+
+      <Outlet />
+    </>
+  ) : null;
 }
 
 export default ProtectedAdmin;
